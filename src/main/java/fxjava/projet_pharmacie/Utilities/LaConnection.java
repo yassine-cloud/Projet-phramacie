@@ -14,7 +14,7 @@ public class LaConnection {
     public static Connection seConnecter() {
         if(connection == null) {
             try {
-                Class.forName(driver);
+                Class.forName("com.mysql.jdbc.Driver");
                 connection = DriverManager.getConnection(url, user, password);
                 System.out.println("Connexion établie");
             } catch (SQLException e) {

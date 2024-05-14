@@ -14,8 +14,8 @@ module fxjava.projet_pharmacie {
     requires jbcrypt;
 
     opens fxjava.projet_pharmacie to javafx.fxml;
-    opens fxjava.projet_pharmacie.Controller to javafx.fxml;
-
     exports fxjava.projet_pharmacie;
-//    exports fxjava.projet_pharmacie;
+
+    opens fxjava.projet_pharmacie.Controller to javafx.fxml;
+    exports fxjava.projet_pharmacie.Controller;
 }

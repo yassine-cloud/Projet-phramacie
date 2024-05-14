@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane xmlns="http://javafx.com/javafx"
+            xmlns:fx="http://javafx.com/fxml"
+            fx:controller="fxjava.projet_pharmacie.Controller.AddPatient"
+            prefHeight="300.0" prefWidth="400.0">
+
+    <!-- Labels -->
+    <Label text="Nom :" layoutX="20.0" layoutY="60.0" />
+    <Label text="Téléphone :" layoutX="20.0" layoutY="100.0" />
+    <Label text="E-mail :" layoutX="20.0" layoutY="140.0" />
+    <Label text="Date de naissance :" layoutX="20.0" layoutY="180.0" />
+
+    <!-- TextFields -->
+    <TextField fx:id="nameField" layoutX="120.0" layoutY="60.0" />
+    <TextField fx:id="phoneField" layoutX="120.0" layoutY="100.0" />
+    <TextField fx:id="emailField" layoutX="120.0" layoutY="140.0" />
+    <DatePicker fx:id="dobPicker" layoutX="120.0" layoutY="180.0" />
+
+    <!-- Add Patient Button -->
+    <Button fx:id="addPatientButton" layoutX="20.0" layoutY="220.0" text="Ajouter Patient" style="-fx-background-color: #4CAF50; -fx-text-fill: white;" />
+    <Button fx:id="cancel" layoutX="120.0" layoutY="220.0" text="Annuler" style="-fx-background-color: #FF5722; -fx-text-fill: white;" />
+
+</AnchorPane>

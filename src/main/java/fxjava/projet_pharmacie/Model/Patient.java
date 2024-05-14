@@ -11,6 +11,8 @@ public class Patient {
     private Date date_nais;
 
 
+    public Patient() {
+    }
     public Patient(String nomPatient, String telPatient, String emailPatient, Date date_nais) {
         this.nomPatient = nomPatient;
         this.telPatient = telPatient;

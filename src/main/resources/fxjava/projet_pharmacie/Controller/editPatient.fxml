@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane xmlns="http://javafx.com/javafx"
+            xmlns:fx="http://javafx.com/fxml"
+            fx:controller="fxjava.projet_pharmacie.Controller.EditPatient"
+            prefHeight="300.0" prefWidth="400.0">
+
+    <!-- Étiquettes -->
+    <Label text="Code :" layoutX="20.0" layoutY="20.0" />
+    <Label text="Nom :" layoutX="20.0" layoutY="60.0" />
+    <Label text="Téléphone :" layoutX="20.0" layoutY="100.0" />
+    <Label text="E-mail :" layoutX="20.0" layoutY="140.0" />
+    <Label text="Date de naissance :" layoutX="20.0" layoutY="180.0" />
+
+    <!-- Champs de texte (read-only) -->
+    <TextField fx:id="codeField" layoutX="120.0" layoutY="20.0" disable="true" />
+    <TextField fx:id="nameField" layoutX="120.0" layoutY="60.0"  />
+    <TextField fx:id="phoneField" layoutX="120.0" layoutY="100.0" />
+    <TextField fx:id="emailField" layoutX="120.0" layoutY="140.0" />
+    <DatePicker fx:id="dobPicker" layoutX="120.0" layoutY="180.0" />
+
+    <!-- Boutons -->
+    <Button fx:id="editPatientButton" layoutX="20.0" layoutY="220.0" text="Modifier" style="-fx-background-color: #4CAF50; -fx-text-fill: white;" />
+    <Button fx:id="cancel" layoutX="120.0" layoutY="220.0" text="Annuler" style="-fx-background-color: #FF5722; -fx-text-fill: white;" />
+    <Button fx:id="deletePatientButton" layoutX="220.0" layoutY="220.0" text="Supprimer" style="-fx-background-color: #F44336; -fx-text-fill: white;" />
+
+</AnchorPane>

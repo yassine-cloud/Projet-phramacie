@@ -11,9 +11,9 @@ import java.util.ArrayList;
 
 public class DaoPatient {
 
-    Connection conn;
+    static Connection conn;
 
-    public ArrayList<Patient> getAllPatients(){
+    public static ArrayList<Patient> getAllPatients(){
         conn = LaConnection.seConnecter();
         ArrayList<Patient> patients = new ArrayList<>();
         try {
@@ -29,7 +29,7 @@ public class DaoPatient {
         return patients;
     }
 
-    public Patient getPatientByCode(int codePatient){
+    public static Patient getPatientByCode(int codePatient){
         conn = LaConnection.seConnecter();
         Patient patient = null;
         try {
@@ -46,7 +46,7 @@ public class DaoPatient {
         return patient;
     }
 
-    public boolean addPatient(Patient patient){
+    public static boolean addPatient(Patient patient){
         conn = LaConnection.seConnecter();
         try {
             String sql = "INSERT INTO patient(nomPatient, telPatient, emailPatient, date_nais) VALUES(?, ?, ?, ?)";
@@ -63,7 +63,7 @@ public class DaoPatient {
         }
     }
 
-    public boolean updatePatient(Patient patient){
+    public static boolean updatePatient(Patient patient){
         conn = LaConnection.seConnecter();
         try {
             String sql = "UPDATE patient SET nomPatient = ?, telPatient = ?, emailPatient = ?, date_nais = ? WHERE codePatient = ?";
@@ -81,7 +81,7 @@ public class DaoPatient {
         }
     }
 
-    public boolean deletePatient(int codePatient){
+    public static boolean deletePatient(int codePatient){
         conn = LaConnection.seConnecter();
         try {
             String sql = "DELETE FROM patient WHERE codePatient = ?";

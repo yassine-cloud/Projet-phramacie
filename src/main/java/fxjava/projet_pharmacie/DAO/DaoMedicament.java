@@ -12,9 +12,9 @@ import java.util.ArrayList;
 
 public class DaoMedicament {
 
-    Connection conn;
+    static Connection conn;
 
-    public ArrayList<Medicament> getAllMedicaments(){
+    public static ArrayList<Medicament> getAllMedicaments(){
         conn = LaConnection.seConnecter();
         ArrayList<Medicament> medicaments = new ArrayList<>();
         try {
@@ -30,7 +30,7 @@ public class DaoMedicament {
         return medicaments;
     }
 
-    public Medicament getMedicamentByCode(int code_med){
+    public static Medicament getMedicamentByCode(int code_med){
         conn = LaConnection.seConnecter();
         Medicament medicament = null;
         try {
@@ -47,7 +47,7 @@ public class DaoMedicament {
         return medicament;
     }
 
-    public boolean addMedicament(Medicament medicament){
+    public static boolean addMedicament(Medicament medicament){
         conn = LaConnection.seConnecter();
         try {
             String sql = "INSERT INTO medicament(nom_med, prix_med, stock_med, type_med) VALUES(?, ?, ?, ?)";
@@ -64,7 +64,7 @@ public class DaoMedicament {
         }
     }
 
-    public boolean updateMedicament(Medicament medicament){
+    public static boolean updateMedicament(Medicament medicament){
         conn = LaConnection.seConnecter();
         try {
             String sql = "UPDATE medicament SET nom_med = ?, prix_med = ?, stock_med = ?, type_med = ? WHERE code_med = ?";
@@ -81,7 +81,7 @@ public class DaoMedicament {
         }
     }
 
-    public boolean deleteMedicament(int code_med){
+    public static boolean deleteMedicament(int code_med){
         conn = LaConnection.seConnecter();
         try {
             String sql = "DELETE FROM medicament WHERE code_med = ?";
