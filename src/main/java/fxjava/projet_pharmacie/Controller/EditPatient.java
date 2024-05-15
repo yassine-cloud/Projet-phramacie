@@ -44,6 +44,35 @@ public class EditPatient implements Initializable {
     }
 
     private void handleEdit() {
+        if(codeField.getText() == null || nameField.getText() == null || phoneField.getText() == null || emailField.getText() == null || dobPicker.getValue() == null) {
+            Alert dia = new Alert(Alert.AlertType.ERROR);
+            dia.setTitle("Modification");
+            dia.setHeaderText("Erreur");
+            dia.setContentText("Veuillez remplir tous les champs");
+            dia.show();
+            return;
+        }
+        try {
+            Integer.parseInt(phoneField.getText());
+
+            // The text is a number
+        } catch (NumberFormatException e) {
+            // The text is not a number
+            Alert dia = new Alert(Alert.AlertType.ERROR);
+            dia.setTitle("Modification");
+            dia.setHeaderText("Erreur");
+            dia.setContentText("Le numéro de téléphone doit être un nombre");
+            dia.show();
+            return;
+        }
+        if(phoneField.getText().length() != 8){
+            Alert dia = new Alert(Alert.AlertType.ERROR);
+            dia.setTitle("Modification");
+            dia.setHeaderText("Erreur");
+            dia.setContentText("Le numéro de téléphone doit contenir 8 chiffres");
+            dia.show();
+            return;
+        }
         patient = new Patient();
         patient.setCodePatient(Integer.parseInt(codeField.getText()));
         patient.setNomPatient(nameField.getText());
@@ -69,6 +98,14 @@ public class EditPatient implements Initializable {
     }
 
     private void handleDelete() {
+        if(patient == null) {
+            Alert dia = new Alert(Alert.AlertType.ERROR);
+            dia.setTitle("Suppression");
+            dia.setHeaderText("Erreur");
+            dia.setContentText("Le patient n'existe pas");
+            dia.show();
+            return;
+        }
         if(DaoPatient.deletePatient(patient.getCodePatient())) {
             Alert dia = new Alert(Alert.AlertType.INFORMATION);
             dia.setTitle("Suppression");

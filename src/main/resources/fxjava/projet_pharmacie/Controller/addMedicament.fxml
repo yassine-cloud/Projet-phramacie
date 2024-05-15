@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ChoiceBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="323.0" prefWidth="339.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="fxjava.projet_pharmacie.Controller.AddMedicament">
+
+    <!-- Labels -->
+    <Label layoutX="56.0" layoutY="101.0" text="Nom :" />
+    <Label layoutX="56.0" layoutY="145.0" text="Prix :" />
+    <Label layoutX="56.0" layoutY="185.0" text="Stock :" />
+    <Label layoutX="56.0" layoutY="225.0" text="Type :" />
+
+    <!-- TextFields -->
+    <TextField fx:id="nameField" layoutX="122.0" layoutY="101.0" />
+    <TextField fx:id="prixField" layoutX="122.0" layoutY="141.0" />
+    <TextField fx:id="stockField" layoutX="122.0" layoutY="181.0" />
+
+    <!-- Add Patient Button -->
+    <Button fx:id="addPatientButton" layoutX="22.0" layoutY="261.0" style="-fx-background-color: #4CAF50; -fx-text-fill: white;" text="Ajouter medicament" />
+    <Button fx:id="cancel" layoutX="157.0" layoutY="261.0" style="-fx-background-color: #FF5722; -fx-text-fill: white;" text="Annuler" />
+   <Label layoutX="46.0" layoutY="29.0" text="Ajouter Medicament">
+      <font>
+         <Font name="System Bold Italic" size="26.0" />
+      </font>
+   </Label>
+   <ChoiceBox fx:id="typeField" layoutX="122.0" layoutY="221.0" prefWidth="150.0" />
+
+</AnchorPane>

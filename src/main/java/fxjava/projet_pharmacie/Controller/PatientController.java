@@ -21,6 +21,18 @@ public class PatientController {
     private TableView<Patient> patientTable;
 
     @FXML
+    private Button buttonDashboard;
+
+    @FXML
+    private Button buttonLogout;
+
+    @FXML
+    private Button buttonMedicament;
+
+    @FXML
+    private Button buttonPatient;
+
+    @FXML
     private TableColumn<Patient, String> nomColumn;
 
     @FXML
@@ -50,6 +62,34 @@ public class PatientController {
         patientTable.getItems().addAll(patients);
 
 
+        patientTable.setOnContextMenuRequested(event -> {
+
+            if(patientTable.getSelectionModel().getSelectedItem() != null){
+                Patient patient = patientTable.getSelectionModel().getSelectedItem();
+                if(patient != null) {
+                    try {
+                        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/fxjava/projet_pharmacie/Controller/medicamentPatient.fxml"));
+                        Scene scene = new Scene(fxmlLoader.load());
+                        MedicamentPatient medicamentPatient = fxmlLoader.getController();
+                        medicamentPatient.setPatient(patient);
+                        Stage stage = (Stage) buttonPatient.getScene().getWindow();
+                        stage.setTitle("Patient Medicament");
+                        stage.setScene(scene);
+//                        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/fxjava/projet_pharmacie/Controller/Login.fxml"));
+//                        Scene scene = new Scene(fxmlLoader.load());
+//                        Stage stage = (Stage) buttonLogout.getScene().getWindow();
+//                        stage.setScene(scene);
+
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
+
+                }
+                else {
+                    System.out.println("No patient selected");
+                }
+            }
+        });
 
         // Set up your TableView columns (codeColumn, nomColumn, etc.)
 
@@ -64,6 +104,7 @@ public class PatientController {
                         Stage stage = new Stage();
                         stage.initModality(Modality.APPLICATION_MODAL);
                         stage.setScene(scene);
+                        stage.setTitle("Edit Patient");
                         EditPatient editPatient = fxmlLoader.getController();
                         editPatient.uploadPatient(patient);
                         stage.showAndWait();
@@ -90,6 +131,7 @@ public class PatientController {
             Stage stage = new Stage();
             stage.initModality(Modality.APPLICATION_MODAL);
             stage.setScene(scene);
+            stage.setTitle("Add Patient");
             stage.showAndWait();
             patients = DaoPatient.getAllPatients(); // Fetch the updated list of patients
             patientTable.getItems().setAll(patients); // Update the table items
@@ -97,6 +139,39 @@ public class PatientController {
         } catch (IOException e) {
             e.printStackTrace();
         }
+        });
+
+        buttonDashboard.setOnAction(event -> {
+            try {
+                FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/fxjava/projet_pharmacie/Controller/Dashboard.fxml"));
+                Scene scene = new Scene(fxmlLoader.load());
+                Stage stage = (Stage) buttonDashboard.getScene().getWindow();
+                stage.setScene(scene);
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        });
+
+        buttonLogout.setOnAction(event -> {
+            try {
+                FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/fxjava/projet_pharmacie/Controller/Login.fxml"));
+                Scene scene = new Scene(fxmlLoader.load());
+                Stage stage = (Stage) buttonLogout.getScene().getWindow();
+                stage.setScene(scene);
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        });
+
+        buttonMedicament.setOnAction(event -> {
+            try {
+                FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/fxjava/projet_pharmacie/Controller/Medicament.fxml"));
+                Scene scene = new Scene(fxmlLoader.load());
+                Stage stage = (Stage) buttonMedicament.getScene().getWindow();
+                stage.setScene(scene);
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
         });
     }
 

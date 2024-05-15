@@ -4,6 +4,7 @@ import fxjava.projet_pharmacie.DAO.DaoPatient;
 import fxjava.projet_pharmacie.Model.Patient;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.TextField;
@@ -35,6 +36,35 @@ public class AddPatient implements Initializable {
     }
 
     private void handleAdd() {
+        if(nameField.getText() == null || phoneField.getText() == null || emailField.getText() == null || dobPicker.getValue() == null) {
+            Alert dia = new Alert(Alert.AlertType.ERROR);
+            dia.setTitle("Ajout");
+            dia.setHeaderText("Erreur");
+            dia.setContentText("Veuillez remplir tous les champs");
+            dia.show();
+
+            return;
+        }
+        try {
+            Integer.parseInt(phoneField.getText());
+            // The text is a number
+        } catch (NumberFormatException e) {
+            // The text is not a number
+            Alert dia = new Alert(Alert.AlertType.ERROR);
+            dia.setTitle("Ajout");
+            dia.setHeaderText("Erreur");
+            dia.setContentText("Le numéro de téléphone doit être un nombre");
+            dia.show();
+            return;
+        }
+        if(phoneField.getText().length() != 8){
+            Alert dia = new Alert(Alert.AlertType.ERROR);
+            dia.setTitle("Modification");
+            dia.setHeaderText("Erreur");
+            dia.setContentText("Le numéro de téléphone doit contenir 8 chiffres");
+            dia.show();
+            return;
+        }
         patient = new Patient();
         patient.setNomPatient(nameField.getText());
         patient.setTelPatient(phoneField.getText());
