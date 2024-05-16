@@ -14,6 +14,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
+import javafx.stage.Modality;
 import javafx.stage.Stage;
 
 import java.io.IOException;
@@ -69,7 +70,7 @@ public class MedicamentPatient implements Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-//        addMedButton.setOnAction(event -> handleAddMed());
+        addMedButton.setOnAction(event -> handleAddMed());
         buttonDashboard.setOnAction(event -> handleDashboard());
         buttonLogout.setOnAction(event -> handleLogout());
         buttonMedicament.setOnAction(event -> handleMedicament());
@@ -114,18 +115,24 @@ public class MedicamentPatient implements Initializable {
 
     }
 
-//    private void handleAddMed() {
-//        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/fxjava/projet_pharmacie/Controller/AddMedicament.fxml"));
-//        try {
-//            // Set the new scene
-//            Stage stage = (Stage) addMedButton.getScene().getWindow();
-//            stage.setScene(new Scene(fxmlLoader.load()));
-//            AddMedicament addMedicament = fxmlLoader.getController();
-//            addMedicament.setPatient(patient);
-//        } catch (IOException e) {
-//            e.printStackTrace();
-//        }
-//    }
+    private void handleAddMed() {
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/fxjava/projet_pharmacie/Controller/addMedicamentPatient.fxml"));
+        try {
+            // Set the new scene
+            Scene scene = new Scene(fxmlLoader.load());
+            Stage stage = new Stage();
+            stage.initModality(Modality.APPLICATION_MODAL);
+            stage.setScene(scene);
+            AddMedicamentPatient addMedicament = fxmlLoader.getController();
+            addMedicament.setPatient(patient);
+            stage.showAndWait();
+            patientMeds = DaoPatientMed.getPatientMedByCodePatient(patient.getCodePatient());
+            MedicamentTable.getItems().setAll(patientMeds);
+            MedicamentTable.refresh();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
 
     private void handleDashboard() {
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/fxjava/projet_pharmacie/Controller/Dashboard.fxml"));

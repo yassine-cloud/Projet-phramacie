@@ -63,13 +63,14 @@ public class Medicament {
 
     @Override
     public String toString() {
-        return "Medicament{" +
-                "code_med=" + code_med +
-                ", nom_med='" + nom_med + '\'' +
-                ", prix_med=" + prix_med +
-                ", stock_med=" + stock_med +
-                ", type_med=" + type_med +
-                '}';
+//        return "Medicament{" +
+//                "code_med=" + code_med +
+//                ", nom_med='" + nom_med + '\'' +
+//                ", prix_med=" + prix_med +
+//                ", stock_med=" + stock_med +
+//                ", type_med=" + type_med +
+//                '}';
+        return nom_med;
     }
 
     @Override
