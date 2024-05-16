@@ -49,7 +49,7 @@ public class LoginController implements Initializable {
             dia.setContentText("Bienvenue " + user.getNom_user() );
             dia.show();
 
-            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/fxjava/projet_pharmacie/Controller/Patient.fxml"));
+            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/fxjava/projet_pharmacie/Controller/Dashboard.fxml"));
             try {
                 // Set the new scene
                 Stage stage = (Stage) but.getScene().getWindow();

@@ -10,6 +10,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
+import javafx.stage.Modality;
 import javafx.stage.Stage;
 
 import java.io.IOException;
@@ -63,8 +64,53 @@ public class Medicament implements Initializable {
 //        buttonMedicament.setOnAction(event -> handleMedicament());
         buttonPatient.setOnAction(event -> handlePatient());
 
+        btnAdd.setOnAction(event -> handleAdd());
+
+        tableMedicament.setOnMouseClicked(event -> {
+            if (event.getClickCount() == 2 && !tableMedicament.getSelectionModel().isEmpty()) {
+                fxjava.projet_pharmacie.Model.Medicament medicament = tableMedicament.getSelectionModel().getSelectedItem();
+                FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/fxjava/projet_pharmacie/Controller/EditMedicament.fxml"));
+                try {
+                    // Set the new scene
+                    Scene scene = new Scene((fxmlLoader.load()));
+                    Stage stage = new Stage();
+                    stage.initModality(Modality.APPLICATION_MODAL);
+                    stage.setScene(scene);
+                    stage.setTitle("Modifier un medicament");
+                    EditMedicament controller = fxmlLoader.getController();
+                    controller.uploadMedicament(medicament);
+                    stage.showAndWait();
+                    medicaments = DaoMedicament.getAllMedicaments();
+                    tableMedicament.getItems().setAll(medicaments);
+                    tableMedicament.refresh();
+
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
+        });
 
 
+
+    }
+
+    private void handleAdd() {
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/fxjava/projet_pharmacie/Controller/addMedicament.fxml"));
+        try {
+            // Set the new scene
+            Scene scene = new Scene((fxmlLoader.load()));
+            Stage stage = new Stage();
+            stage.initModality(Modality.APPLICATION_MODAL);
+            stage.setScene(scene);
+            stage.setTitle("Ajouter un medicament");
+            stage.showAndWait();
+            medicaments = DaoMedicament.getAllMedicaments();
+            tableMedicament.getItems().setAll(medicaments);
+            tableMedicament.refresh();
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
 

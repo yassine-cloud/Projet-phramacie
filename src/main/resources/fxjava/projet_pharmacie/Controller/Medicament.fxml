@@ -91,7 +91,7 @@
        <AnchorPane prefHeight="500.0" prefWidth="700.0">
       
           <children>
-              <TableView fx:id="tableMedicament" layoutX="14.0" layoutY="14.0" prefHeight="475.0" prefWidth="572.0" style="-fx-background-color: #F0F0F0;">
+              <TableView fx:id="tableMedicament" layoutX="14.0" layoutY="14.0" prefHeight="475.0" prefWidth="574.0" style="-fx-background-color: #F0F0F0;">
                   <columns>
                       <TableColumn fx:id="colNom" prefWidth="143.0" text="Nom" />
                       <TableColumn fx:id="colPrix" prefWidth="143.0" text="Prix" />
