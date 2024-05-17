@@ -19,7 +19,7 @@ public class Run extends Application {
     public void start(Stage primaryStage) throws IOException {
         System.out.println("Hello");
 
-        FXMLLoader fxmlLoader = new FXMLLoader(Run.class.getResource("Medicament.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(Run.class.getResource("login.fxml"));
 //        primaryStage.initStyle(javafx.stage.StageStyle.UNDECORATED);
         Scene scene = new Scene(fxmlLoader.load());
         primaryStage.setTitle("Pharmacie!");

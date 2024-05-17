@@ -76,6 +76,31 @@ public class MedicamentPatient implements Initializable {
         buttonMedicament.setOnAction(event -> handleMedicament());
         buttonPatient.setOnAction(event -> handlePatient());
 
+        MedicamentTable.setOnMouseClicked(event -> {
+            if (event.getClickCount() == 2 && !MedicamentTable.getSelectionModel().isEmpty()) {
+                PatientMed medicament = MedicamentTable.getSelectionModel().getSelectedItem();
+                FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/fxjava/projet_pharmacie/Controller/editMedicamentPatient.fxml"));
+                try {
+                    // Set the new scene
+                    Scene scene = new Scene((fxmlLoader.load()));
+                    Stage stage = new Stage();
+                    stage.initModality(Modality.APPLICATION_MODAL);
+                    stage.setScene(scene);
+                    stage.setTitle("Modifier un medicament");
+                    EditMedicamentPatient controller = fxmlLoader.getController();
+                    controller.setPatientMed(medicament);
+                    stage.showAndWait();
+                    patientMeds = DaoPatientMed.getPatientMedByCodePatient(patient.getCodePatient());
+                    medicaments = DaoMedicament.getAllMedicaments();
+                    MedicamentTable.getItems().setAll(patientMeds);
+                    MedicamentTable.refresh();
+
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
+        });
+
 
 
 

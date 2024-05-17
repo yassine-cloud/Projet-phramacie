@@ -15,8 +15,8 @@
     <Label layoutX="55.0" layoutY="164.0" text="Stock :" />
 
     <!-- Add Patient Button -->
-    <Button fx:id="addMedButton" layoutX="22.0" layoutY="281.0" style="-fx-background-color: #4CAF50; -fx-text-fill: white;" text="Editer medicament" />
-    <Button fx:id="cancel" layoutX="157.0" layoutY="281.0" style="-fx-background-color: #FF5722; -fx-text-fill: white;" text="Annuler" />
+    <Button fx:id="editMedButton" layoutX="22.0" layoutY="289.0" style="-fx-background-color: #4CAF50; -fx-text-fill: white;" text="Editer medicament" />
+    <Button fx:id="cancel" layoutX="157.0" layoutY="290.0" style="-fx-background-color: #FF5722; -fx-text-fill: white;" text="Annuler" />
    <Label layoutX="46.0" layoutY="23.0" text="Editer Medicament">
       <font>
          <Font name="System Bold Italic" size="26.0" />
@@ -41,6 +41,7 @@
          <Font size="15.0" />
       </font>
    </Label>
-   <Button fx:id="cancel1" layoutX="246.0" layoutY="281.0" style="-fx-background-color: red; -fx-text-fill: white;" text="Supprimer" />
+   <Button fx:id="supprimerButton" layoutX="246.0" layoutY="307.0" style="-fx-background-color: red; -fx-text-fill: white;" text="Supprimer" />
+   <Button fx:id="restoreButton" layoutX="252.0" layoutY="274.0" style="-fx-background-color: yellow; -fx-text-fill: white;" text="Restorer" />
 
 </AnchorPane>

@@ -95,7 +95,7 @@ public class Dashboard implements Initializable {
                             revenue += PatientMed.getPayer();
                         }
                     }
-                    series.getData().add(new XYChart.Data(months[monthRev-1], revenue));
+                    series.getData().add(new XYChart.Data((months[monthRev-1]+"/"+yearRev), revenue));
                     if(i == 11){
                         revenue11 = revenue;
                     }
