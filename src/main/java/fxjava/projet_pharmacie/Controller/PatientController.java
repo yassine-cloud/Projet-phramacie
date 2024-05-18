@@ -33,6 +33,9 @@ public class PatientController {
     private Button buttonPatient;
 
     @FXML
+    private Button buttonUser;
+
+    @FXML
     private TableColumn<Patient, String> nomColumn;
 
     @FXML
@@ -168,6 +171,17 @@ public class PatientController {
                 FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/fxjava/projet_pharmacie/Controller/Medicament.fxml"));
                 Scene scene = new Scene(fxmlLoader.load());
                 Stage stage = (Stage) buttonMedicament.getScene().getWindow();
+                stage.setScene(scene);
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        });
+
+        buttonUser.setOnAction(event -> {
+            try {
+                FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/fxjava/projet_pharmacie/Controller/User.fxml"));
+                Scene scene = new Scene(fxmlLoader.load());
+                Stage stage = (Stage) buttonUser.getScene().getWindow();
                 stage.setScene(scene);
             } catch (IOException e) {
                 e.printStackTrace();

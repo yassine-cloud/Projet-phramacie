@@ -43,6 +43,9 @@ public class Dashboard implements Initializable {
     @FXML
     private Button buttonPatient;
 
+    @FXML
+    private Button buttonUser;
+
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
@@ -51,6 +54,7 @@ public class Dashboard implements Initializable {
         buttonLogout.setOnAction(event -> handleLogout());
         buttonMedicament.setOnAction(event -> handleMedicament());
         buttonPatient.setOnAction(event -> handlePatient());
+        buttonUser.setOnAction(event -> handleUser());
 
 
     }
@@ -178,6 +182,17 @@ public class Dashboard implements Initializable {
         try {
             // Set the new scene
             Stage stage = (Stage) buttonPatient.getScene().getWindow();
+            stage.setScene(new Scene(fxmlLoader.load()));
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    private void handleUser() {
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/fxjava/projet_pharmacie/Controller/User.fxml"));
+        try {
+            // Set the new scene
+            Stage stage = (Stage) buttonUser.getScene().getWindow();
             stage.setScene(new Scene(fxmlLoader.load()));
         } catch (IOException e) {
             e.printStackTrace();

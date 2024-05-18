@@ -68,7 +68,7 @@
                                </HBox>
                            </graphic>
                        </Button>
-                       <Button fx:id="buttonLogout" layoutX="38.0" layoutY="181.0" mnemonicParsing="false" style="-fx-background-color: transparent; -fx-text-fill: white; -fx-font-size: 16px; -fx-font-weight: bold;">
+                       <Button fx:id="buttonLogout" layoutX="38.0" layoutY="225.0" mnemonicParsing="false" style="-fx-background-color: transparent; -fx-text-fill: white; -fx-font-size: 16px; -fx-font-weight: bold;">
                            <graphic>
                                <HBox alignment="CENTER" spacing="10">
                                    <ImageView fitHeight="35.0" fitWidth="35.0">
@@ -80,6 +80,20 @@
                                </HBox>
                            </graphic>
                        </Button>
+                  <Button fx:id="buttonUser" layoutX="38.0" layoutY="180.0" mnemonicParsing="false" style="-fx-background-color: transparent; -fx-text-fill: white; -fx-font-size: 16px; -fx-font-weight: bold;">
+                     <graphic>
+                        <HBox alignment="CENTER" spacing="10">
+                           <children>
+                              <ImageView fitHeight="35.0" fitWidth="35.0">
+                                 <image>
+                                    <Image url="@../Assets/user.png" />
+                                 </image>
+                              </ImageView>
+                              <Label text="Utilisateurs" />
+                           </children>
+                        </HBox>
+                     </graphic>
+                  </Button>
                    </children>
                <VBox.margin>
                   <Insets top="47.0" />

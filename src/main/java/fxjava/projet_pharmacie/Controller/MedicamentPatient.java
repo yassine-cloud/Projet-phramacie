@@ -43,6 +43,9 @@ public class MedicamentPatient implements Initializable {
     private Button buttonPatient;
 
     @FXML
+    private Button buttonUser;
+
+    @FXML
     private TableColumn<PatientMed, String> dateColumn;
 
     @FXML
@@ -75,6 +78,16 @@ public class MedicamentPatient implements Initializable {
         buttonLogout.setOnAction(event -> handleLogout());
         buttonMedicament.setOnAction(event -> handleMedicament());
         buttonPatient.setOnAction(event -> handlePatient());
+        buttonUser.setOnAction(event -> {
+            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/fxjava/projet_pharmacie/Controller/User.fxml"));
+            try {
+                // Set the new scene
+                Stage stage = (Stage) buttonUser.getScene().getWindow();
+                stage.setScene(new Scene(fxmlLoader.load()));
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        });
 
         MedicamentTable.setOnMouseClicked(event -> {
             if (event.getClickCount() == 2 && !MedicamentTable.getSelectionModel().isEmpty()) {
