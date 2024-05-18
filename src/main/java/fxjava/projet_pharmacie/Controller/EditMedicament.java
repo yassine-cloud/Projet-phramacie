@@ -5,14 +5,12 @@ import fxjava.projet_pharmacie.Model.Medicament;
 import fxjava.projet_pharmacie.Model.TypeMed;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.Alert;
-import javafx.scene.control.Button;
-import javafx.scene.control.ChoiceBox;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.stage.Stage;
 
 import java.net.URL;
 import java.util.ResourceBundle;
+import java.util.concurrent.atomic.AtomicBoolean;
 
 public class EditMedicament implements Initializable {
 
@@ -103,6 +101,23 @@ public class EditMedicament implements Initializable {
             dia.show();
             return;
         }
+        Alert dia = new Alert(Alert.AlertType.CONFIRMATION);
+        dia.setTitle("Confirmation");
+        dia.setHeaderText("Confirmation requise");
+        dia.setContentText("Êtes-vous sûr de vouloir supprimer ce medicament ?\n Cette action est irréversible");
+
+        ButtonType buttonTypeYes = new ButtonType("Oui", ButtonBar.ButtonData.YES);
+        ButtonType buttonTypeNo = new ButtonType("Non", ButtonBar.ButtonData.NO);
+        dia.getButtonTypes().setAll(buttonTypeYes, buttonTypeNo);
+
+        AtomicBoolean canDelete = new AtomicBoolean(true);
+        dia.showAndWait().ifPresent(response -> {
+            if (response == buttonTypeNo) {
+                canDelete.set(false);
+            }
+        });
+        if(!canDelete.get()) return;
+
         DaoMedicament.deleteMedicament(Integer.parseInt(codeField.getText()));
         Stage stage = (Stage) deleteMedicamentButton.getScene().getWindow();
         stage.close();

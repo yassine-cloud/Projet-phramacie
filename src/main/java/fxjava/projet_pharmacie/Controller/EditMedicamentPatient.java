@@ -220,7 +220,7 @@ public class EditMedicamentPatient implements Initializable {
         Alert dia = new Alert(Alert.AlertType.CONFIRMATION);
         dia.setTitle("Confirmation");
         dia.setHeaderText("Confirmation requise");
-        dia.setContentText("Êtes-vous sûr de vouloir supprimer ce médicament ? (Rq : Cette action est irréversible)");
+        dia.setContentText("Êtes-vous sûr de vouloir supprimer ce médicament ? \n(Rq : Cette action est irréversible)");
 
         ButtonType buttonTypeYes = new ButtonType("Oui", ButtonBar.ButtonData.YES);
         ButtonType buttonTypeNo = new ButtonType("Non", ButtonBar.ButtonData.NO);

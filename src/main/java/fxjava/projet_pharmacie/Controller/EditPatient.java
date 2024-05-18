@@ -4,15 +4,13 @@ import fxjava.projet_pharmacie.DAO.DaoPatient;
 import fxjava.projet_pharmacie.Model.Patient;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.Alert;
-import javafx.scene.control.Button;
-import javafx.scene.control.DatePicker;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.stage.Stage;
 
 import java.net.URL;
 import java.time.LocalDate;
 import java.util.ResourceBundle;
+import java.util.concurrent.atomic.AtomicBoolean;
 
 public class EditPatient implements Initializable {
     @FXML
@@ -106,8 +104,23 @@ public class EditPatient implements Initializable {
             dia.show();
             return;
         }
+        Alert dia = new Alert(Alert.AlertType.CONFIRMATION);
+        dia.setTitle("Confirmation");
+        dia.setHeaderText("Confirmation requise");
+        dia.setContentText("Êtes-vous sûr de vouloir supprimer ce patient ?\n Cette action est irréversible");
+
+        ButtonType buttonTypeYes = new ButtonType("Oui", ButtonBar.ButtonData.YES);
+        ButtonType buttonTypeNo = new ButtonType("Non", ButtonBar.ButtonData.NO);
+        dia.getButtonTypes().setAll(buttonTypeYes, buttonTypeNo);
+        AtomicBoolean canDelete = new AtomicBoolean(true);
+        dia.showAndWait().ifPresent(response -> {
+            if (response == buttonTypeNo) {
+                canDelete.set(false);
+            }
+        });
+        if(!canDelete.get()) return;
         if(DaoPatient.deletePatient(patient.getCodePatient())) {
-            Alert dia = new Alert(Alert.AlertType.INFORMATION);
+            dia = new Alert(Alert.AlertType.INFORMATION);
             dia.setTitle("Suppression");
             dia.setHeaderText("Suppression effectuée");
             dia.setContentText("Le patient a été supprimé avec succès");
@@ -115,7 +128,7 @@ public class EditPatient implements Initializable {
             Stage stage = (Stage) cancel.getScene().getWindow();
             stage.close();
         } else {
-            Alert dia = new Alert(Alert.AlertType.ERROR);
+            dia = new Alert(Alert.AlertType.ERROR);
             dia.setTitle("Suppression");
             dia.setHeaderText("Erreur");
             dia.setContentText("Une erreur s'est produite lors de la suppression du patient");
