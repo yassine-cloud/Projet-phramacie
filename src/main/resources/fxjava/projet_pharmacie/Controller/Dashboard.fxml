@@ -15,7 +15,7 @@
 <?import javafx.scene.shape.Circle?>
 <?import javafx.scene.text.Font?>
 
-<SplitPane dividerPositions="0.5" prefHeight="564.0" prefWidth="914.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="fxjava.projet_pharmacie.Controller.Dashboard">
+<SplitPane dividerPositions="0.5" prefHeight="579.0" prefWidth="914.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="fxjava.projet_pharmacie.Controller.Dashboard">
    <items>
        <VBox alignment="TOP_CENTER" prefHeight="500.0" prefWidth="176.0" style="-fx-background-color: linear-gradient(to bottom right, #449d63, #333464);">
            <children>
